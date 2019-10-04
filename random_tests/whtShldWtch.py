@@ -2,22 +2,41 @@
 
 import random
 
-
-def make_choice(possibilities):
-    secure_random = random.SystemRandom()
-    print(secure_random.choice(secure_random.choice(possibilities)))
+# def make_choice(possibilities):
+#     secure_random = random.SystemRandom()
+#     print(secure_random.choice(secure_random.choice(possibilities)))
 
 
 def make_choices(possibilities, amount):
     secure_random = random.SystemRandom()
-    option = secure_random.choice(possibilities)
-    print(", ".join(secure_random.sample(option, amount)))
+    option = possibilities[secure_random.randint(1, 3)]
+    for i in range(0, amount):
+        print(option[secure_random.randint(1, 3)])
 
 
-shows = ["Mad Men", "Naruto", "American Vandal"]
-tutorials = ["Python", "CTF", "Networks"]
-misc = ["random youtube videos", "pr0n", "read a book, dammit"]
-options = (shows, tutorials, misc)
+shows = {
+    1: "Mad Men",
+    2: "Naruto",
+    3: "American Vandal",
+}
+
+tutorials = {
+    1: "Python",
+    2: "CTF",
+    3: "Networks",
+}
+
+misc = {
+    1: "random youtube videos",
+    2: "pr0n",
+    3: "read a book, dammit",
+}
+
+options = {
+    1: shows,
+    2: tutorials,
+    3: misc,
+}
 
 # make_choice(options)
-make_choices(options, 2)
+make_choices(options, 5)
