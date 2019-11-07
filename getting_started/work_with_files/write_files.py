@@ -17,3 +17,17 @@ write_file = open("getting_started/work_with_files/write_test1.txt", "w")  #open
 write_file.write("Overwrite file with this line")
 
 write_file.close()
+
+# write html to a file
+
+html_file = open("getting_started/work_with_files/index.html", "w")
+
+html_file.write("""\
+    <html>
+        <head>
+            <title>Test</title>
+        </head>
+        <body>
+            <h1>Hello World</h1>
+        </body>
+    </html>""")
