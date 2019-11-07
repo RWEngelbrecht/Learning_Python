@@ -5,10 +5,10 @@
 #open("test.txt", "r+")  #r + w
 #open("test.txt", "a")   #apend
 
-test_file = open("getting_started/reading_files/test.txt", "r")
+read_file = open("getting_started/work_with_files/read_test.txt", "r")
 
 try:
-    lines = test_file.readlines()     #read() returns all lines as single string. readlines() returns array. I mean list.
+    lines = read_file.readlines()     #read() returns all lines as single string. readlines() returns array. I mean list.
     print(lines)
     for line in lines:
         if "too" in line and "boogaloo" in line:
@@ -20,4 +20,5 @@ try:
 except:
     print("nope")
 
-test_file.close()
+read_file.close()
+
