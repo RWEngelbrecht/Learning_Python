@@ -29,5 +29,11 @@ html_file.write("""\
         </head>
         <body>
             <h1>Hello World</h1>
+            <button id='popup'>click here</button>
+            <script>
+                document.getElementById('popup').addEventListener('click', function() {
+                    window.alert('Thank you');
+                });
+            </script>
         </body>
     </html>""")
