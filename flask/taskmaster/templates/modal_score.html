@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+	{% if marks > 50 %}
+		<div class="modal is-active" id="succ_modal">
+			<div class="modal-background"></div>
+			<div class="modal-content">
+				<p class="title" style="color:azure">What an object of pride you are!</p>
+			</div>
+			<button class="modal-close is-large" aria-label="close"></button>
+		</div>
+	{% else %}
+		<div class="modal is-active" id="fail_modal">
+			<div class="modal-background"></div>
+			<div class="modal-content">
+				<p class="title" style="color:azure">Disappointment!</p>
+			</div>
+			<button class="modal-close is-large" aria-label="close" id="closeModal"></button>
+		</div>
+	{%endif%}
+	<script>
+			document.querySelector('.modal-close').addEventListener('click', function() {
+				document.getElementById('succ_modal').setAttribute('class', 'modal');
+			})
+			document.querySelector('.modal-close').addEventListener('click', function() {
+				document.getElementById('fail_modal').setAttribute('class', 'modal');
+			})
+	</script>
+{% endblock %}
