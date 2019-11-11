@@ -5,8 +5,8 @@
 {% endblock %}
 {% block body %}
 <main>
-	<section class="section is-centered">
-		<div class="container is-centered">
+	<section class="section">
+		<div class="container">
 			<h1 class="title">
 				The TaskMaster<small>&#8482;</small> Welcomes You, As-Of-Yet Directionless One
 			</h1>
@@ -14,6 +14,33 @@
 				A Simple Way To Not Go Astray
 			</p>
 		</div>
+
 	</section>
+	<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th><abbr title="Task">Task</abbr></th>
+						<th><abbr title="Added">Date Added</abbr></th>
+						<th><abbr title="Added">Actions</abbr></th>
+					</tr>
+					{% for task in tasks %}
+						<tr>
+							<td> {{ task.content }} </td>
+							<td> {{ task.date_created.date() }} </td>
+							<td>
+								<a href={{ redirect. }}>Delete</a>
+								<br>
+								<a href="#">Update</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</thead>
+			</table>
+			<form action="/" method="POST">
+				<input type="text" name="newTask" id="newTask">
+				<input type="submit" value="Add Task">
+			</form>
+		</div>
 </main>
 {% endblock %}
