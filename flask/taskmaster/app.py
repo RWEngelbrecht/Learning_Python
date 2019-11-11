@@ -38,12 +38,30 @@ def index():
 
 @app.route('/delete/<int:id>')
 def delete(id):
+	task_del = Todo.query.get_or_404(id)
 	try:
-		
+		db.session.delete(task_del)
+		db.session.commit()
+		return redirect('/')
+	except:
+		return "Could not delete that!"
 
-@app.route('/modal/<int:score>')		#bind functions to specific url with route()
-def hello(score):
-	return render_template('modal_score.html', marks = score)
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+	task_updt = Todo.query.get_or_404(id)
+	if request.method == 'POST':
+		task_updt.content = request.form['updtTask']
+		try:
+			db.session.commit()
+			return redirect('/')
+		except:
+			return "Could not update that!"
+	else:
+		return render_template('update.html', task=task_updt)
+
+# @app.route('/modal/<int:score>')		#bind functions to specific url with route()
+# def hello(self, score):
+# 	return render_template('modal_score.html', marks = score)
 
 if __name__ == "__main__":
 	app.run(debug=True)
