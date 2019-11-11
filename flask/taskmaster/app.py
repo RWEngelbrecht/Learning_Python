@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
@@ -18,10 +18,28 @@ class Todo(db.Model):		#instanciate database
 		return '<Task %r>' % self.id
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
-	return render_template('index.html') #render html with jinja2 function
+	if request.method == 'POST':
+		task_content = request.form['newTask']
+		new_task = Todo(content=task_content)
+
+		try:
+			db.session.add(new_task)
+			db.session.commit()
+			return redirect('/')
+		except:
+			return 'Something went horribly wrong!'
+
+	else:
+		tasks = Todo.query.order_by(Todo.date_created).all()
+		return render_template('index.html', tasks=tasks) #render html with jinja2 function
 										 #file should be in templates folder
+
+@app.route('/delete/<int:id>')
+def delete(id):
+	try:
+		
 
 @app.route('/modal/<int:score>')		#bind functions to specific url with route()
 def hello(score):
