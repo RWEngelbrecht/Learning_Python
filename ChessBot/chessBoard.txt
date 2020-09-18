@@ -1,0 +1,14 @@
+##	Pawns | Rook | Knight | Bishop | Queen | King | empty
+##	-----------------------------------------------------
+##	 p    |  r   |   k	  |   b	   |   Q   |  K   |  em
+##	Set color you're playing as
+side=black
+##	Denote color with b or w prepended to piece key.
+br bk bb bQ bK bb bk br
+bp bp bp bp bp bp bp bp
+em em em em em em em em
+em em em em em em em em
+em em em em em em em em
+em em em em em em em em
+bp bp bp bp bp bp bp bp
+br bk bb bQ bK bb bk br
