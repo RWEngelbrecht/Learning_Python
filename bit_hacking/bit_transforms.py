@@ -1,10 +1,13 @@
 
-def set_bit(num):
+def set_bit(num, bit_index):
 	"""
-	Sets 
+	Sets bit at bit_index to 1
 	"""
-	return (num << 6) | num
+	return (num << bit_index) | num if bit_index > 0 and bit_index < 8 else num
 
 
 if __name__ == "__main__":
-	print(set_bit(2))
+  bit = set_bit(2, 8)
+  print(bit)
+  print(bin(bit))
+
